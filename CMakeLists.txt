@@ -7,12 +7,6 @@ project(
   VERSION 0.1.0
   LANGUAGES CXX
 )
-  
-set(CMAKE_CXX_STANDARD 14)
-
-# app executable
-  
-add_executable(main main.cpp)
 
 # add dependency manager
 
@@ -39,12 +33,24 @@ include(${CPM_DOWNLOAD_LOCATION})
 # add dependencies
 
 CPMAddPackage(
-  NAME fmt
+  NAME fmt  # string formatting
   GIT_TAG 9.1.0
   GITHUB_REPOSITORY fmtlib/fmt
-  OPTIONS "FMT_INSTALL YES" # create an installable target
+  OPTIONS "FMT_INSTALL YES"  # create an installable target
 )
+
+CPMAddPackage(
+  NAME spdlog  # logger
+  GITHUB_REPOSITORY gabime/spdlog 
+  VERSION 1.8.2
+  # don't bother linking our fmtlib
+)
+
+# add executable
+  
+add_executable(main main.cpp)
+target_compile_features(main PRIVATE cxx_std_14)  # should this be public or private?
 
 # link dependencies
 
-target_link_libraries(main PRIVATE fmt::fmt)
+target_link_libraries(main PRIVATE fmt::fmt spdlog::spdlog)

@@ -5,6 +5,9 @@
  *
  */
 
-#include <fmt/core.h>
+#include <spdlog/spdlog.h>
 
-int main(int, char**) { fmt::print("Hello, world!\n"); }
+int main(int, char**) {
+  spdlog::info("Hello, world!\n");
+  return 0;
+}
