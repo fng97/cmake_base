@@ -7,7 +7,7 @@
 
 #include <spdlog/spdlog.h>
 
-int main(int, char**) {
+int main() {
   spdlog::info("Hello, world!\n");
   return 0;
 }

@@ -48,9 +48,9 @@ CPMAddPackage(
 
 # add executable
   
-add_executable(main main.cpp)
-target_compile_features(main PRIVATE cxx_std_14)  # should this be public or private?
+add_executable(${CMAKE_PROJECT_NAME} main.cpp)
+target_compile_features(${CMAKE_PROJECT_NAME} PRIVATE cxx_std_14)  # should this be public or private?
 
 # link dependencies
 
-target_link_libraries(main PRIVATE fmt::fmt spdlog::spdlog)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE fmt::fmt spdlog::spdlog)
