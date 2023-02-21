@@ -7,7 +7,9 @@
 
 #include <spdlog/spdlog.h>
 
+#include "greeter/greeter.hpp"  // for GetGreeting
+
 int main() {
-  spdlog::info("Hello, world!\n");
+  spdlog::info(GetGreeting());
   return 0;
 }
